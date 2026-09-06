@@ -23,7 +23,7 @@
         <a href="event-services.html" class="cp-nav-link">Event Services</a>
         <a href="rentals.html" class="cp-nav-link">Rentals</a>
         <a href="dresses.html" class="cp-nav-link-active">Dresses</a>
-        <a href="gallery.html" class="cp-nav-link">Photography Gallery</a>
+        <a href="gallery.html" class="cp-nav-link">Photo Gallery</a>
         <a href="index.html#contact" class="cp-enquire-link">Enquire</a>
       </nav>
     </div>
@@ -68,7 +68,7 @@
 
       <article class="dress-card" data-cat="Wedding" style="background: #fdfbf6; border: 1px solid #e8dcc3; display: flex; flex-direction: column;">
         <div style="height: 340px; position: relative;">
-          <image-slot id="d-mermaid" shape="rect" placeholder="mermaid gown, side"></image-slot>
+          <img src="uploads/IMG_3043.jpeg" alt="Red silk embroidered fitted gown with veiled headpiece on a mannequin" style="display: block; width: 100%; height: 100%; object-fit: cover;" />
           <span style="position: absolute; top: 12px; left: 12px; padding: 5px 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6f5116; background: #f3e9d3; border: 1px solid #e8d3a4;">Wedding</span>
         </div>
         <div style="padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
@@ -256,6 +256,13 @@
     </div>
   </section>
 
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 28px;">
+    <div style="font-size: 12px; letter-spacing: 0.34em; text-transform: uppercase; color: #7d6220;">On film</div>
+    <h2 style="margin: 14px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(28px, 3.6vw, 42px); color: #221c12;">See how they move<span style="font-family: 'Noto Serif SC', serif; font-size: 16px; letter-spacing: 0.14em; color: #7d6220; margin-left: 14px;">礼服影片</span></h2>
+    <p style="margin: 20px 0 0; max-width: 620px; font-size: 16px; line-height: 1.8; color: #574c3c; text-wrap: pretty;">A gown photographs one way and walks another. These are filmed in the studio and on the day.</p>
+    <div id="dress-films" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 34px;"></div>
+  </section>
+
   <section style="max-width: 900px; margin: 0 auto; padding: 76px 28px; text-align: center; display: grid; justify-items: center; gap: 22px;">
     <div style="width: 120px; height: 1px; background: linear-gradient(90deg, rgba(176,139,62,0), #b08b3e, rgba(176,139,62,0));"></div>
     <h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(26px, 3.4vw, 40px); color: #221c12;">Come and try them on</h2>
@@ -289,6 +296,52 @@
         });
       });
     });
+
+    (function () {
+      // Turns a YouTube or Vimeo link into its embeddable form. Leave both
+      // src and url empty for a film that hasn't been shot/uploaded yet.
+      function toEmbed(url) {
+        if (!url) return '';
+        var yt = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+        if (yt) return 'https://www.youtube-nocookie.com/embed/' + yt[1];
+        var vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+        if (vm) return 'https://player.vimeo.com/video/' + vm[1];
+        return '';
+      }
+
+      var FILMS = [
+        { title: 'Bridal walk', sub: 'A-line and ballgowns, studio floor', src: '', url: '' },
+        { title: 'Fitting room', sub: 'Alterations and second fitting', src: '', url: '' },
+        { title: 'Cheongsam & evening', sub: 'Tea ceremony and reception wear', src: '', url: '' }
+      ];
+
+      var grid = document.getElementById('dress-films');
+      grid.innerHTML = FILMS.map(function (v) {
+        var embed = toEmbed(v.url);
+        var file = v.src || (v.url && !embed ? v.url : '');
+        var media;
+        if (file) {
+          media = '<video src="' + file + '" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>';
+        } else if (embed) {
+          media = '<iframe src="' + embed + '" title="' + v.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="width: 100%; height: 100%; border: 0; display: block;"></iframe>';
+        } else {
+          media =
+            '<div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;">' +
+              '<span style="width: 44px; height: 1px; background: #b08b3e;"></span>' +
+              '<span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #cbbfab;">Film to come</span>' +
+            '</div>';
+        }
+        return (
+          '<figure style="margin: 0; background: #fdfbf6; border: 1px solid #e8dcc3;">' +
+            '<div style="position: relative; aspect-ratio: 9/16; background: #171310;">' + media + '</div>' +
+            '<figcaption style="padding: 20px 22px;">' +
+              '<div style="font-family: \'Cormorant Garamond\', Georgia, serif; font-size: 20px; color: #221c12;">' + v.title + '</div>' +
+              '<div style="margin-top: 6px; font-size: 13px; color: #6b5c45;">' + v.sub + '</div>' +
+            '</figcaption>' +
+          '</figure>'
+        );
+      }).join('');
+    })();
   </script>
 
 </body>
