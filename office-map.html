@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Colorful Party — 3613 Clearview Place, Doraville, GA 30340</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #fbf8f2; }
+  #map { width: 100%; height: 100%; }
+  .leaflet-container { font-family: 'Jost', 'Helvetica Neue', Helvetica, sans-serif; background: #f6efe2; }
+  .cp-pin { width: 18px; height: 18px; background: #b08b3e; border: 2px solid #fdfbf6; border-radius: 50%; box-shadow: 0 2px 10px rgba(34,28,18,0.35); }
+  .cp-pop { font-size: 13px; line-height: 1.7; color: #2b2419; }
+  .cp-pop b { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .cp-pop a { color: #7d6220; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+  // Front of the building, 3613 Clearview Pl — coordinates taken from the
+  // studio's own Google Maps listing.
+  var OFFICE = [33.8979137, -84.2683976];
+
+  var map = L.map('map', { scrollWheelZoom: false }).setView(OFFICE, 15);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
+  }).addTo(map);
+  L.marker(OFFICE, {
+    icon: L.divIcon({ className: '', html: '<div class="cp-pin"></div>', iconSize: [18, 18], iconAnchor: [9, 9] })
+  }).addTo(map).bindPopup(
+    '<div class="cp-pop"><b>Colorful Party</b>3613 Clearview Place<br />Doraville, GA 30340<br />' +
+    '<a href="tel:+16783156820">678-315-6820</a></div>'
+  );
+</script>
+</body>
+</html>
