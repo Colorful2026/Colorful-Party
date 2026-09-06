@@ -161,6 +161,11 @@
     var ALL_TILES = buildTiles();
     var state = { filter: "all", shown: 18 };
 
+    var REAL_PHOTOS = {
+      "dresses-1": { src: "uploads/IMG_7435.JPG", alt: "White lace mermaid wedding gown displayed on a mannequin with a veiled hat" },
+      "dresses-4": { src: "uploads/bff0c3c1733cad648a1ff6c6ef96a6.JPG", alt: "Gold silk cheongsam with black lace trim displayed on a mannequin" }
+    };
+
     function renderFilters() {
       var el = document.getElementById("gallery-filters");
       el.innerHTML = "";
@@ -186,10 +191,14 @@
       var remaining = matching.length - visible.length;
 
       grid.innerHTML = visible.map(function (t) {
+        var photo = REAL_PHOTOS[t.id];
+        var media = photo
+          ? '<img src="' + photo.src + '" alt="' + photo.alt + '" style="display: block; width: 100%; height: 100%; object-fit: cover;" />'
+          : '<image-slot id="' + t.id + '" shape="rect" placeholder="' + t.hint + '"></image-slot>';
         return (
           '<figure style="margin: 0; grid-column: ' + t.span + ';">' +
             '<div style="position: relative; aspect-ratio: ' + t.ratio + '; background: #f1e8d6; border: 1px solid #ece0c9;">' +
-              '<image-slot id="' + t.id + '" shape="rect" placeholder="' + t.hint + '"></image-slot>' +
+              media +
             '</div>' +
             '<figcaption style="margin-top: 10px; display: flex; justify-content: space-between; gap: 10px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">' +
               '<span>' + t.caption + '</span><span style="color: #6b5c45;">' + t.year + '</span>' +
