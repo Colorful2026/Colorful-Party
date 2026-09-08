@@ -82,3 +82,23 @@ body { background: #fbf8f2; color: #2b2419; font-family: 'Jost', 'Helvetica Neue
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
+
+.rental-card { scroll-margin-top: 90px; }   /* anchors clear the sticky header */
+/* The header is 69px only while the nav sits on one row. With six items it wraps
+   to two rows below ~1130px (101px tall), and .cp-header-inner wraps again below
+   860px (119-180px), so a flat 90px would drop anchored cards under the header. */
+@media (max-width: 1150px) { .rental-card { scroll-margin-top: 120px; } }
+@media (max-width: 860px) { .rental-card { scroll-margin-top: 200px; } }
+
+.cp-see-more {
+  position: absolute; bottom: 10px; right: 10px; padding: 7px 12px;
+  background: rgba(253, 251, 246, 0.92); font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #4a4032; transition: background 160ms ease, color 160ms ease;
+}
+.cp-see-more:hover { background: #fdfbf6; color: #6f5116; }
+
+.cp-card-link {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #7d6220; border-bottom: 1px solid #d8c393; padding-bottom: 2px; white-space: nowrap;
+}
+.cp-card-link:hover { color: #6f5116; border-bottom-color: #b08b3e; }
