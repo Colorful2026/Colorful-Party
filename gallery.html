@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Jost:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./site.css" />
-<script src="./image-slot.js" defer></script>
 </head>
 <body>
 
@@ -130,42 +129,59 @@
       { id: "dresses", label: "Gowns" }
     ];
 
-    var HINTS = {
-      proposals: ["heart arch, lit", "the question", "cold sparks", "petal aisle", "ring detail", "family reveal", "setup at dusk", "first embrace"],
-      weddings: ["ceremony wide", "first dance", "head table", "bouquet detail", "tea ceremony", "reception room", "cake cutting", "portrait, couple"],
-      events: ["birthday installation", "balloon feature", "corporate stage", "dessert table", "guest candids", "night reveal"],
-      portraits: ["studio portrait", "maternity", "family group", "engagement session", "headshot", "children"],
-      backdrops: ["draped backdrop", "pearl and lily detail", "floral arch", "neon sign", "uplighting", "table styling"],
-      dresses: ["gown, full length", "lace detail", "bridal party", "cheongsam", "evening gown", "fitting room"]
-    };
+    // Every tile is a real photograph in uploads/. There is no placeholder
+    // branch any more: a photo that is not listed here does not appear at all,
+    // so the grid can never render an empty box.
+    var PHOTOS = [
+      { cat: "proposals", src: "E51BB611-C2B8-48FE-ACF8-464E5DBF6C53.PNG", caption: "The moment", alt: "Couple kissing at a lit heart-shaped floral arch during a proposal" },
+      { cat: "proposals", src: "proposal-backyard-arch.webp", caption: "Backyard setup", alt: "Backyard proposal setup with a heart-shaped floral arch, white aisle runner, petals and flower balls" },
+      { cat: "proposals", src: "IMG_6674.jpeg", caption: "Aisle and frame", alt: "Round floral-frame proposal aisle setup, complete" },
+      { cat: "proposals", src: "IMG_6692.JPEG", caption: "Evening reveal", alt: "Round floral-frame arch lit at night" },
+      { cat: "proposals", src: "IMG_7397.JPG", caption: "Neon signage", alt: "Illuminated MARRYME neon sign with 2026 numerals at a night proposal setup" },
+      { cat: "proposals", src: "IMG_6680.JPEG", caption: "On location", alt: "Production crew filming a bride walking the aisle toward a floral proposal frame" },
 
-    function buildTiles() {
-      var out = [];
-      Object.keys(HINTS).forEach(function (cat) {
-        HINTS[cat].forEach(function (hint, i) {
-          var wide = (i + 1) % 5 === 0;
-          var label = CATEGORIES.filter(function (c) { return c.id === cat; })[0].label;
-          out.push({
-            id: cat + "-" + (i + 1),
-            cat: cat,
-            hint: hint,
-            caption: label + " · " + hint.replace(/^./, function (m) { return m.toUpperCase(); }),
-            year: 2026 - (i % 3),
-            ratio: wide ? "16 / 10" : (i % 3 === 0 ? "3 / 4" : "4 / 5"),
-            span: wide ? "span 2" : "auto"
-          });
-        });
-      });
-      return out;
-    }
+      { cat: "weddings", src: "IMG_7399.JPG", caption: "First dance", alt: "Couple sharing their first dance surrounded by spark fountains and guests" },
+      { cat: "weddings", src: "IMG_7318.jpeg", caption: "Banquet hall", alt: "Twin white and gold throne chairs beneath a floral arch, banquet hall setup" },
+      { cat: "weddings", src: "IMG_7444.JPG", caption: "Bridesmaid sets", alt: "Four women in matching ivory and gold embroidered cheongsam-style bridesmaid sets" },
 
-    var ALL_TILES = buildTiles();
+      { cat: "events", src: "outdoor-banquet.webp", caption: "Outdoor banquet", alt: "Outdoor banquet with guests seated along a red aisle runner and lantern boxes" },
+      { cat: "events", src: "3D84AA2F-F883-4D35-8320-F1F17409EF76.PNG", caption: "Fog and bubbles", alt: "Couple dancing amid fog and bubbles at their reception" },
+      { cat: "events", src: "twin-monkey-couplets.webp", caption: "Twin Monkey bring good fortune", alt: "Two Monkey King performers holding 寿比南山 and 福如东海 couplets on a red carpet" },
+      { cat: "events", src: "robot-warrior-suits.webp", caption: "Robot warrior suits", alt: "Red and gold warrior mech suit displayed with armour pieces, masks and a staff" },
+
+      { cat: "portraits", src: "family-portrait-wide.webp", caption: "Family · Studio", alt: "Extended family in red qipao photographed in the studio against a 和气致祥 calligraphy backdrop" },
+      { cat: "portraits", src: "family-portrait.webp", caption: "Three generations", alt: "Three rows of an extended family in red qipao before a 和气致祥 calligraphy backdrop" },
+      { cat: "portraits", src: "hanfu-studio-portrait.webp", caption: "Hanfu · Studio set", alt: "Woman in red hanfu raising a sword on a wooden-bridge studio set with blossom and wisteria" },
+      { cat: "portraits", src: "IMG_6098.JPG", caption: "Qipao · Studio gold", alt: "Studio portrait of a woman in a red lace qipao with a hand fan" },
+
+      { cat: "backdrops", src: "IMG_3159.jpeg", caption: "Draped and uplit", alt: "Draped studio backdrop with pearl strands and warm uplight" },
+      { cat: "backdrops", src: "IMG_3158.jpeg", caption: "Head table styling", alt: "Styled reception table in front of a pearl-strand draped backdrop" },
+      { cat: "backdrops", src: "IMG_7110.jpeg", caption: "Candelabra stands", alt: "Gold crystal candelabra stands topped with white roses" },
+      { cat: "backdrops", src: "flower-stands-crystal.webp", caption: "Crystal flower stands", alt: "Gold flower stands hung with crystal strands and topped with white roses on a banquet table" },
+
+      { cat: "dresses", src: "IMG_7435.JPG", caption: "Mermaid · Lace", alt: "White lace mermaid wedding gown displayed on a mannequin with a veiled hat" },
+      { cat: "dresses", src: "52EAF3F6-A7C1-4210-964B-70D1BB30FFC8.PNG", caption: "A-line · Appliqué", alt: "Full-length A-line gown with floral lace appliqué and off-shoulder straps" },
+      { cat: "dresses", src: "0882F294-9BB9-41CE-80F2-5AC66A2D1117.PNG", caption: "Ballgown", alt: "Model wearing an off-shoulder beaded ballgown with a full skirt" },
+      { cat: "dresses", src: "b49d30994ce9d22fd5eb2d177a3355.JPG", caption: "Evening · Beaded", alt: "Black beaded floor-length mermaid evening gown on display" },
+      { cat: "dresses", src: "showroom-black-gown.webp", caption: "Column gown · Showroom", alt: "Client in a black beaded column gown in the accessories showroom" },
+      { cat: "dresses", src: "bff0c3c1733cad648a1ff6c6ef96a6.JPG", caption: "Qipao · Gold silk", alt: "Gold silk cheongsam with black lace trim displayed on a mannequin" },
+      { cat: "dresses", src: "IMG_3043.jpeg", caption: "Red silk · Embroidered", alt: "Red silk embroidered fitted gown with veiled headpiece on a mannequin" }
+    ];
+
+    var ALL_TILES = PHOTOS.map(function (p, i) {
+      var label = CATEGORIES.filter(function (c) { return c.id === p.cat; })[0].label;
+      var wide = (i + 1) % 5 === 0;
+      return {
+        cat: p.cat,
+        src: "uploads/" + p.src,
+        alt: p.alt,
+        caption: label + " · " + p.caption,
+        ratio: wide ? "16 / 10" : (i % 3 === 0 ? "3 / 4" : "4 / 5"),
+        span: wide ? "span 2" : "auto"
+      };
+    });
+
     var state = { filter: "all", shown: 18 };
-
-    var REAL_PHOTOS = {
-      "dresses-1": { src: "uploads/IMG_7435.JPG", alt: "White lace mermaid wedding gown displayed on a mannequin with a veiled hat" },
-      "dresses-4": { src: "uploads/bff0c3c1733cad648a1ff6c6ef96a6.JPG", alt: "Gold silk cheongsam with black lace trim displayed on a mannequin" }
-    };
 
     function renderFilters() {
       var el = document.getElementById("gallery-filters");
@@ -192,17 +208,14 @@
       var remaining = matching.length - visible.length;
 
       grid.innerHTML = visible.map(function (t) {
-        var photo = REAL_PHOTOS[t.id];
-        var media = photo
-          ? '<img src="' + photo.src + '" alt="' + photo.alt + '" style="display: block; width: 100%; height: 100%; object-fit: cover;" />'
-          : '<image-slot id="' + t.id + '" shape="rect" placeholder="' + t.hint + '"></image-slot>';
+        var media = '<img src="' + t.src + '" alt="' + t.alt + '" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover;" />';
         return (
           '<figure style="margin: 0; grid-column: ' + t.span + ';">' +
             '<div style="position: relative; aspect-ratio: ' + t.ratio + '; background: #f1e8d6; border: 1px solid #ece0c9;">' +
               media +
             '</div>' +
             '<figcaption style="margin-top: 10px; display: flex; justify-content: space-between; gap: 10px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">' +
-              '<span>' + t.caption + '</span><span style="color: #6b5c45;">' + t.year + '</span>' +
+              '<span>' + t.caption + '</span>' +
             '</figcaption>' +
           '</figure>'
         );
