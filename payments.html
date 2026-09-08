@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make a Payment — Colorful Party</title>
+<meta name="description" content="Pay a deposit, rental balance or invoice to Colorful Party securely online. Card payments are processed by Clover.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Jost:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(251, 248, 242, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid #ece0c9;">
+    <div class="cp-header-inner" style="max-width: 1240px; margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="index.html" class="cp-logo-lockup" style="display: flex; align-items: baseline; gap: 10px; color: #2b2419;">
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase;">Colorful Party</span>
+        <span style="font-family: 'Noto Serif SC', serif; font-size: 13px; letter-spacing: 0.18em; color: #7d6220;">卡乐芙派对</span>
+      </a>
+      <nav class="cp-nav" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; row-gap: 10px; column-gap: 24px; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;">
+        <a href="event-services.html" class="cp-nav-link">Event Services</a>
+        <a href="rentals.html" class="cp-nav-link">Rentals</a>
+        <a href="dresses.html" class="cp-nav-link">Dresses</a>
+        <a href="gallery.html" class="cp-nav-link">Photo Gallery</a>
+        <a href="payments.html" class="cp-nav-link-active">Make a Payment</a>
+        <a href="index.html#contact" class="cp-enquire-link">Enquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 64px 28px 34px;">
+    <div style="font-size: 12px; letter-spacing: 0.34em; text-transform: uppercase; color: #7d6220;">Make a payment</div>
+    <h1 style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(32px, 4.6vw, 54px); line-height: 1.1; color: #221c12;">Secure your date<span style="font-family: 'Noto Serif SC', serif; font-size: 18px; letter-spacing: 0.14em; color: #7d6220; margin-left: 16px;">在线付款</span></h1>
+    <p style="margin: 22px 0 0; max-width: 620px; font-size: 17px; line-height: 1.85; color: #574c3c; text-wrap: pretty;">Pay a deposit, a rental balance or an invoice. Card payments are processed by Clover, the same system we use in the studio, so your payment appears on one statement with everything else.</p>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 28px 72px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 34px; align-items: start;">
+
+      <div style="display: grid; gap: 18px;">
+        <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">1 · What are you paying for</div>
+        <div id="pay-kinds" style="display: grid; gap: 10px;"></div>
+
+        <div style="margin-top: 14px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">2 · Amount</div>
+        <div id="pay-presets" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+        <label style="display: grid; gap: 7px;">
+          <span style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Or enter an amount</span>
+          <span style="display: flex; align-items: center; gap: 10px; padding: 13px 14px; border: 1px solid #ddcda9; background: #fdfbf6;">
+            <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; color: #6b5c45;">$</span>
+            <input type="text" id="pay-amount" inputmode="decimal" placeholder="0" style="flex: 1; border: none; background: transparent; outline: none; font-family: 'Jost', sans-serif; font-size: 17px; font-weight: 300; color: #221c12;" />
+            <span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8d7c62;">USD</span>
+          </span>
+        </label>
+      </div>
+
+      <div style="display: grid; gap: 14px;">
+        <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">3 · Your details</div>
+        <label style="display: grid; gap: 7px;">
+          <span style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Name</span>
+          <input type="text" placeholder="Name on the booking" class="cp-input" />
+        </label>
+        <label style="display: grid; gap: 7px;">
+          <span style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Email</span>
+          <input type="text" placeholder="hello@example.com" class="cp-input" />
+        </label>
+        <label style="display: grid; gap: 7px;">
+          <span style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Phone</span>
+          <input type="text" placeholder="678-000-0000" class="cp-input" />
+        </label>
+        <label style="display: grid; gap: 7px;">
+          <span style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Reference or note</span>
+          <input type="text" placeholder="Invoice 1042 · 14 March wedding" class="cp-input" />
+        </label>
+
+        <div style="margin-top: 10px; padding: 24px; background: #f5eee0; border: 1px solid #e8dcc3;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+            <span id="pay-summary-label" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Event deposit</span>
+            <span id="pay-display" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 34px; color: #221c12;">$0</span>
+          </div>
+          <p id="pay-terms" style="margin: 14px 0 0; font-size: 13px; line-height: 1.7; color: #6b5c45;"></p>
+          <button type="button" id="pay-button" style="margin-top: 20px; width: 100%; min-height: 52px; padding: 16px 22px; cursor: pointer; border: none; background: #e8dcc3; color: #1e1810; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; transition: background 160ms ease;">Enter an amount to continue</button>
+          <p style="margin: 14px 0 0; font-size: 12px; line-height: 1.7; color: #8d7c62;">Card details are entered on Clover's secure payment page, never on this site. Visa, Mastercard, American Express, Discover and Apple Pay accepted. Zelle and Venmo on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #f5eee0; padding: 66px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="font-size: 12px; letter-spacing: 0.34em; text-transform: uppercase; color: #7d6220;">Terms</div>
+      <h2 style="margin: 14px 0 30px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(26px, 3.2vw, 38px); color: #221c12;">What you are agreeing to</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px;">
+
+        <div style="padding: 26px 24px; background: #fdfbf6; border: 1px solid #e8dcc3;">
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 20px; color: #221c12;">Deposits</h3>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.75; color: #6b5c45; text-wrap: pretty;">Event deposits are 30% of the quoted total and hold your date. The balance is due on the day.</p>
+        </div>
+
+        <div style="padding: 26px 24px; background: #fdfbf6; border: 1px solid #e8dcc3;">
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 20px; color: #221c12;">Refunds</h3>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.75; color: #6b5c45; text-wrap: pretty;">Deposits are refundable up to 30 days before the date, less any costs already committed to vendors.</p>
+        </div>
+
+        <div style="padding: 26px 24px; background: #fdfbf6; border: 1px solid #e8dcc3;">
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 20px; color: #221c12;">Rental deposits</h3>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.75; color: #6b5c45; text-wrap: pretty;">Refunded within five working days of the gown being returned and checked. Cleaning is on us.</p>
+        </div>
+
+        <div style="padding: 26px 24px; background: #fdfbf6; border: 1px solid #e8dcc3;">
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 20px; color: #221c12;">Receipts</h3>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.75; color: #6b5c45; text-wrap: pretty;">Clover emails a receipt the moment the payment clears. We follow with written confirmation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 60px 28px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 28px 44px; align-items: center; justify-content: space-between; padding: 26px 28px; border: 1px solid #e8dcc3; background: #fdfbf6;">
+      <div style="display: grid; gap: 8px;">
+        <span style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b5c45;">Other ways to pay</span>
+        <span style="font-size: 15px; line-height: 1.7; color: #4a4032;">In person at the studio · bank transfer on request · card over the phone at 678-315-6820</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Visa</span></span>
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Mastercard</span></span>
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Amex</span></span>
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Discover</span></span>
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Apple Pay</span></span>
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Zelle</span></span>
+        <span style="width: 78px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid #ece0c9; background: #fdfbf6; flex: none;"><span style="font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #6b5c45; text-align: center; line-height: 1.2;">Venmo</span></span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #171310; color: #cbbfab; padding: 46px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px; letter-spacing: 0.12em;">
+      <span style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; letter-spacing: 0.16em; text-transform: uppercase; color: #e8d3a4;">Colorful Party</span>
+        <span style="font-family: 'Noto Serif SC', serif; font-size: 13px; letter-spacing: 0.18em; color: #cbbfab;">卡乐芙派对</span>
+      </span>
+      <span style="display: grid; gap: 6px;">
+        <span>3613 Clearview Place, Doraville, GA 30340</span>
+        <a href="mailto:info@colorfulparty.fun" class="cp-footer-contact">info@colorfulparty.fun</a>
+        <a href="tel:+16783156820" class="cp-footer-contact">678-315-6820</a>
+      </span>
+      <span>© 2026 Colorful Party 卡乐芙派对</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var KINDS = [
+      { id: 'event', title: 'Event deposit', zh: '活动定金', detail: 'Holds your date. 30% of the quoted total, balance due on the day.', presets: [500, 1000, 1500], terms: '30% of the quoted total. The balance is due on the day of the event. Dates are held once the deposit clears.' },
+      { id: 'rental', title: 'Gown rental', zh: '礼服租赁', detail: 'Rental fee plus a refundable deposit, returned when the piece comes back.', presets: [240, 380, 460], terms: 'Includes one fitting, steaming and light alterations. A refundable deposit is held until the gown is returned and checked.' },
+      { id: 'purchase', title: 'Gown purchase', zh: '礼服购买', detail: 'Pay in full, or 50% now and the balance at the second fitting.', presets: [725, 1450, 2480], terms: 'Two fittings and all alterations included. Made-to-order pieces run six to eight weeks from the first payment.' },
+      { id: 'invoice', title: 'Invoice balance', zh: '账单结算', detail: 'Settle an invoice we have already sent you.', presets: [], terms: 'Enter the amount shown on your invoice and put the invoice number in the reference field.' }
+    ];
+
+    var state = { kind: 'event', amount: '' };
+
+    function active() {
+      return KINDS.filter(function (k) { return k.id === state.kind; })[0] || KINDS[0];
+    }
+
+    function money(v) {
+      var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
+      if (!n || n <= 0) return '';
+      return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    }
+
+    function render() {
+      var kind = active();
+      var display = money(state.amount);
+      var ready = !!display;
+
+      var kindsEl = document.getElementById('pay-kinds');
+      kindsEl.innerHTML = KINDS.map(function (k) {
+        var on = k.id === state.kind;
+        return (
+          '<button type="button" data-kind="' + k.id + '" style="text-align: left; cursor: pointer; padding: 18px 20px; display: grid; gap: 6px; border: 1px solid ' + (on ? '#9a7529' : '#e8dcc3') + '; background: ' + (on ? '#f3e9d3' : '#fdfbf6') + '; font-family: \'Jost\', sans-serif;">' +
+            '<span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;">' +
+              '<span style="font-family: \'Cormorant Garamond\', Georgia, serif; font-size: 21px; color: #221c12;">' + k.title + '</span>' +
+              '<span style="font-family: \'Noto Serif SC\', serif; font-size: 13px; letter-spacing: 0.14em; color: #7d6220;">' + k.zh + '</span>' +
+            '</span>' +
+            '<span style="font-size: 14px; line-height: 1.6; color: #6b5c45;">' + k.detail + '</span>' +
+          '</button>'
+        );
+      }).join('');
+      Array.prototype.forEach.call(kindsEl.querySelectorAll('button'), function (btn) {
+        btn.addEventListener('click', function () {
+          state.kind = btn.dataset.kind;
+          state.amount = '';
+          render();
+        });
+      });
+
+      var presetsEl = document.getElementById('pay-presets');
+      presetsEl.innerHTML = kind.presets.map(function (p) {
+        var on = String(p) === String(state.amount);
+        return '<button type="button" data-amount="' + p + '" style="min-height: 44px; padding: 11px 20px; cursor: pointer; font-family: \'Jost\', sans-serif; font-size: 14px; letter-spacing: 0.1em; border: 1px solid ' + (on ? '#9a7529' : '#ddcda9') + '; background: ' + (on ? '#f3e9d3' : '#fdfbf6') + '; color: ' + (on ? '#6f5116' : '#4a4032') + ';">$' + p.toLocaleString('en-US') + '</button>';
+      }).join('');
+      Array.prototype.forEach.call(presetsEl.querySelectorAll('button'), function (btn) {
+        btn.addEventListener('click', function () {
+          state.amount = btn.dataset.amount;
+          render();
+        });
+      });
+
+      document.getElementById('pay-summary-label').textContent = kind.title;
+      document.getElementById('pay-display').textContent = display || '$0';
+      document.getElementById('pay-terms').textContent = kind.terms;
+
+      var btn = document.getElementById('pay-button');
+      btn.textContent = ready ? 'Continue to secure checkout' : 'Enter an amount to continue';
+      btn.style.background = ready ? '#c2a15c' : '#e8dcc3';
+      btn.onclick = function () {
+        if (!ready) return;
+        // Clover Hosted Checkout: a small server endpoint creates the checkout
+        // session with your Clover API key and returns its one-time URL. The
+        // key must never live in this page. Swap this alert for:
+        //   const r = await fetch('/api/clover/checkout', { method: 'POST',
+        //     body: JSON.stringify({ kind: state.kind, amount: state.amount }) });
+        //   window.location.href = (await r.json()).href;
+        window.alert(
+          'Checkout is not connected yet.\n\n' +
+          kind.title + ' — ' + display + '\n\n' +
+          'Once the site is hosted, this button opens Clover\'s secure payment page.'
+        );
+      };
+    }
+
+    var amountInput = document.getElementById('pay-amount');
+    amountInput.addEventListener('input', function () {
+      state.amount = amountInput.value;
+      render();
+    });
+
+    render();
+  })();
+  </script>
+
+</body>
+</html>
