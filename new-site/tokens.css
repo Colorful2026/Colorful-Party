@@ -1,0 +1,36 @@
+:root {
+  --color-paper: oklch(97% 0.012 82);
+  --color-paper-soft: oklch(94% 0.018 82);
+  --color-ink: oklch(23% 0.018 65);
+  --color-ink-soft: oklch(41% 0.015 68);
+  --color-rule: oklch(83% 0.018 82);
+  --color-gold: oklch(55% 0.09 78);
+  --color-gold-deep: oklch(43% 0.075 78);
+  --color-dark: oklch(19% 0.018 65);
+  --color-hero-overlay: oklch(12% 0.01 65 / .55);
+  --color-viewer-backdrop: oklch(12% 0.01 65 / .88);
+  --color-light: oklch(96% 0.012 82);
+  --color-focus: oklch(48% 0.12 78);
+  --font-display: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  --font-body: 'Jost', 'Noto Serif SC', sans-serif;
+  --font-zh: 'Noto Serif SC', serif;
+  --space-xs: .5rem;
+  --space-sm: .75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --text-body: 1rem;
+  --text-lede: clamp(1.16rem, 1.1vw + .8rem, 1.42rem);
+  --text-display: clamp(3rem, 7vw, 7rem);
+  --text-heading: clamp(2.7rem, 5vw, 5rem);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in: cubic-bezier(.7, 0, .84, 0);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --radius-none: 0;
+  --rule-hairline: 1px;
+}
